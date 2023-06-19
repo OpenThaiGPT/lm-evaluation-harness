@@ -13,13 +13,19 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/EleutherAI/lm-evaluation-harness",
     packages=setuptools.find_packages(),
+    # required to include yaml files in pip installation
+    package_data={
+        "lm_eval": ["**/*.yaml"],
+        "examples": ["**/*.yaml"],
+    },
+    include_package_data=True,
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires=">=3.6",
+    python_requires=">=3.9",
     install_requires=[
         "accelerate>=0.18.0",
         "datasets>=2.0.0",
@@ -47,5 +53,7 @@ setuptools.setup(
         "promptsource": [
             "promptsource @ git+https://github.com/bigscience-workshop/promptsource.git#egg=promptsource"
         ],
+        "auto-gptq": ["auto-gptq[triton] @ git+https://github.com/PanQiWei/AutoGPTQ"],
+        "anthropic": ["anthropic"],
     },
 )
