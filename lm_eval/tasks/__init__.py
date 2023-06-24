@@ -60,6 +60,7 @@ from . import xwinograd
 from . import pawsx
 from . import xnli
 from . import mgsm
+from . import xquad
 
 ########################################
 # Translation tasks
@@ -92,6 +93,19 @@ all_translation_benchmarks = {
 
 
 TASK_REGISTRY = {
+    # Xquad
+    "xquad_ar": xquad.XquadAR,
+    "xquad_de": xquad.XquadDE,
+    "xquad_el": xquad.XquadEL,
+    "xquad_en": xquad.XquadEN,
+    "xquad_es": xquad.XquadES,
+    "xquad_hi": xquad.XquadHI,
+    "xquad_ro": xquad.XquadRO,
+    "xquad_ru": xquad.XquadRU,
+    "xquad_th": xquad.XquadTH,
+    "xquad_tr": xquad.XquadTR,
+    "xquad_vi": xquad.XquadVI,
+    "xquad_zh": xquad.XquadZH,
     # GLUE
     "cola": glue.CoLA,
     "mnli": glue.MNLI,
