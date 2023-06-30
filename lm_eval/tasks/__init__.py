@@ -5,6 +5,7 @@ import sacrebleu
 import lm_eval.base
 
 from . import superglue
+from . import superglue_th
 from . import glue
 from . import rte_th
 from . import arc
@@ -113,6 +114,9 @@ TASK_REGISTRY = {
     "record": superglue.ReCoRD,
     "wic": superglue.WordsInContext,
     "wsc": superglue.SGWinogradSchemaChallenge,
+    "copa_th": superglue_th.Copa,
+    "multirc_th": superglue_th.MultiRC,
+    "record_th": superglue_th.ReCoRD,
     # Order by benchmark/genre?
     "coqa": coqa.CoQA,
     "drop": drop.DROP,
