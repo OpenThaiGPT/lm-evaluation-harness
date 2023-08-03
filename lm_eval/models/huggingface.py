@@ -2,6 +2,7 @@ import math
 import torch
 import torch.nn.functional as F
 import transformers
+from transformers import LlamaForCausalLM, LlamaTokenizer
 import peft
 from peft import __version__ as PEFT_VERSION
 from pathlib import Path
@@ -323,6 +324,22 @@ class HuggingFaceAutoLM(BaseLM):
         )
         return model
 
+    # def _create_auto_tokenizer(
+    #     self,
+    #     *,
+    #     pretrained: str,
+    #     revision: str,
+    #     subfolder: str,
+    #     tokenizer: Optional[str] = None,
+    # ) -> transformers.PreTrainedTokenizer:
+    #     """Returns a pre-trained tokenizer from a pre-trained tokenizer configuration."""
+    #     tokenizer = self.AUTO_TOKENIZER_CLASS.from_pretrained(
+    #         pretrained if tokenizer is None else tokenizer,
+    #         revision=revision + ("/" + subfolder if subfolder is not None else ""),
+    #     )
+    #     tokenizer.pad_token = tokenizer.eos_token
+    #     return tokenizer
+    
     def _create_auto_tokenizer(
         self,
         *,
@@ -332,12 +349,19 @@ class HuggingFaceAutoLM(BaseLM):
         tokenizer: Optional[str] = None,
     ) -> transformers.PreTrainedTokenizer:
         """Returns a pre-trained tokenizer from a pre-trained tokenizer configuration."""
-        tokenizer = self.AUTO_TOKENIZER_CLASS.from_pretrained(
-            pretrained if tokenizer is None else tokenizer,
-            revision=revision + ("/" + subfolder if subfolder is not None else ""),
-        )
+        try:
+            tokenizer = self.AUTO_TOKENIZER_CLASS.from_pretrained(
+                pretrained if tokenizer is None else tokenizer,
+                revision=revision + ("/" + subfolder if subfolder is not None else ""),
+            )
+        except:
+            # LLaMATokenizer not found, using default tokenizer
+            tokenizer = LlamaTokenizer.from_pretrained(pretrained,
+                revision=revision + ("/" + subfolder if subfolder is not None else ""),)
+
         tokenizer.pad_token = tokenizer.eos_token
         return tokenizer
+
 
     @property
     def add_special_tokens(self) -> bool:

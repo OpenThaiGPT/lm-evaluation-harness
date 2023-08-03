@@ -5,7 +5,9 @@ import sacrebleu
 import lm_eval.base
 
 from . import superglue
+from . import superglue_th
 from . import glue
+from . import rte_th
 from . import arc
 from . import coqa
 from . import race
@@ -60,6 +62,7 @@ from . import xwinograd
 from . import pawsx
 from . import xnli
 from . import mgsm
+from . import thaisum
 
 ########################################
 # Translation tasks
@@ -77,6 +80,7 @@ selected_translation_benchmarks = {
     **gpt3_translation_benchmarks,
     "wmt20": sacrebleu.get_langpairs_for_testset("wmt20"),
     "iwslt17": ["en-ar", "ar-en"],  # Arabic
+    
 }
 
 # 319 total
@@ -92,12 +96,15 @@ all_translation_benchmarks = {
 
 
 TASK_REGISTRY = {
+    #text summarize
+    "thaisum": thaisum.ThaiSum,
     # GLUE
     "cola": glue.CoLA,
     "mnli": glue.MNLI,
     "mnli_mismatched": glue.MNLIMismatched,
     "mrpc": glue.MRPC,
     "rte": glue.RTE,
+    "rte_th": rte_th.RTE,
     "qnli": glue.QNLI,
     "qqp": glue.QQP,
     # "stsb": glue.STSB, # not implemented yet
@@ -111,6 +118,9 @@ TASK_REGISTRY = {
     "record": superglue.ReCoRD,
     "wic": superglue.WordsInContext,
     "wsc": superglue.SGWinogradSchemaChallenge,
+    "copa_th": superglue_th.Copa,
+    "multirc_th": superglue_th.MultiRC,
+    "record_th": superglue_th.ReCoRD,
     # Order by benchmark/genre?
     "coqa": coqa.CoQA,
     "drop": drop.DROP,
