@@ -62,6 +62,7 @@ from . import xwinograd
 from . import pawsx
 from . import xnli
 from . import mgsm
+from . import thaisum
 
 ########################################
 # Translation tasks
@@ -79,6 +80,7 @@ selected_translation_benchmarks = {
     **gpt3_translation_benchmarks,
     "wmt20": sacrebleu.get_langpairs_for_testset("wmt20"),
     "iwslt17": ["en-ar", "ar-en"],  # Arabic
+    
 }
 
 # 319 total
@@ -94,6 +96,8 @@ all_translation_benchmarks = {
 
 
 TASK_REGISTRY = {
+    #text summarize
+    "thaisum": thaisum.ThaiSum,
     # GLUE
     "cola": glue.CoLA,
     "mnli": glue.MNLI,
