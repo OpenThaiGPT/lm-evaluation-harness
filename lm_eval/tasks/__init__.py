@@ -60,6 +60,7 @@ from . import xwinograd
 from . import pawsx
 from . import xnli
 from . import mgsm
+from . import wisesight_sentiment
 
 ########################################
 # Translation tasks
@@ -92,6 +93,8 @@ all_translation_benchmarks = {
 
 
 TASK_REGISTRY = {
+    # Wisesight
+    "wisesight_sentiment": wisesight_sentiment.WisesightSentiment,
     # GLUE
     "cola": glue.CoLA,
     "mnli": glue.MNLI,
