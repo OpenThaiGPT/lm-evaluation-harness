@@ -5,3 +5,6 @@ doc_to_choice: '{{[premise+", 正确? 是的, "+hypothesis,premise+", 正确? �
 doc_to_text: ''
 include: xnli_common_yaml
 task: xnli_zh
+group:
+  - xnli_default
+  - multiple_choice_defualt_zh

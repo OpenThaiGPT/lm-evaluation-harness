@@ -5,3 +5,6 @@ doc_to_choice: '{{[premise+", ถูกต้อง? ใช่, "+hypothesis,pre
 doc_to_text: ''
 include: xnli_common_yaml
 task: xnli_th
+group:
+  - multiple_choice_defualt_th
+  - xnli_default

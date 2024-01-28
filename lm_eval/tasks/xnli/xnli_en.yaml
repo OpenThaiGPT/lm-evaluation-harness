@@ -5,3 +5,7 @@ doc_to_choice: '{{[premise+", right? Yes, "+hypothesis,premise+", right? Also, "
 doc_to_text: ''
 include: xnli_common_yaml
 task: xnli_en
+group:
+  - xnli_default
+  - multiple_choice_defualt_en
+  
