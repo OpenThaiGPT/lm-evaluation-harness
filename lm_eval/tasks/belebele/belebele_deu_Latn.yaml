@@ -2,3 +2,6 @@
 "include": "_default_template_yaml"
 "task": "belebele_deu_Latn"
 "test_split": "deu_Latn"
+group:
+  belebele_default
+  multiple_choice_defualt_de
