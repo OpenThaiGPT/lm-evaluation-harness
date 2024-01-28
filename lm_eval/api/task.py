@@ -118,7 +118,7 @@ class TaskConfig(dict):
     def __setitem__(self, item, value):
         return setattr(self, item, value)
 
-    def to_dict(self):
+    def to_dict(self, keep_callable=False):
         """dumps the current config as a dictionary object, as a printable format.
         null fields will not be printed.
         Used for dumping results alongside full task configuration
@@ -134,8 +134,11 @@ class TaskConfig(dict):
             if v is None:
                 cfg_dict.pop(k)
             elif isinstance(v, Callable):
-                # TODO: this should handle Promptsource template objects as a separate case?
-                cfg_dict[k] = str(v)
+                if keep_callable:
+                    cfg_dict[k] = v
+                else:
+                    # TODO: this should handle Promptsource template objects as a separate case?
+                    cfg_dict[k] = str(v)
         return cfg_dict
 
 
@@ -487,7 +490,7 @@ class Task(abc.ABC):
     def apply_filters(self):
         if hasattr(self, "_filters"):
             for f in self._filters:
-                f.apply(self._instances, None)
+                f.apply(self._instances)
         else:
             eval_logger.warning("No filter defined, passing through instances")
             return self._instances
@@ -623,16 +626,15 @@ class ConfigurableTask(Task):
         if self.config.filter_list is not None:
             self._filters = []
             for filter_config in self.config.filter_list:
-                for filter_pipeline in filter_config:
-                    filter_name = filter_config["name"]
-                    filter_functions = filter_config["filter"]
-                    components = []
-                    for function in filter_functions:
-                        kwargs = {
-                            key: function[key] for key in function if key != "function"
-                        }
-                        components.append([function["function"], kwargs])
-                    filter_pipeline = build_filter_ensemble(filter_name, components)
+                filter_name = filter_config["name"]
+                filter_functions = filter_config["filter"]
+                components = []
+                for function in filter_functions:
+                    kwargs = {
+                        key: function[key] for key in function if key != "function"
+                    }
+                    components.append([function["function"], kwargs])
+                filter_pipeline = build_filter_ensemble(filter_name, components)
                 self._filters.append(filter_pipeline)
         else:
             self._filters = [build_filter_ensemble("none", [["take_first", None]])]
@@ -810,7 +812,7 @@ class ConfigurableTask(Task):
     def apply_filters(self):
         if hasattr(self, "_filters"):
             for f in self._filters:
-                f.apply(self._instances, self.task_docs)
+                f.apply(self._instances)
         else:
             eval_logger.warning("No filter defined, passing through instances")
             return self._instances
