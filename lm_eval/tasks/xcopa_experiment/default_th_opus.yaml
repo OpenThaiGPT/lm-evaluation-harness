@@ -1,0 +1,4 @@
+include: default_et.yaml
+task: xcopa_th_opus
+dataset_name: Tha-opus-mt-en-mul
+doc_to_text: !function utils.doc_to_text_th

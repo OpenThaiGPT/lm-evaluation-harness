@@ -1,0 +1,8 @@
+"fewshot_split": "validation"
+"include": "_default_template_yaml"
+"task": "belebele_tha_Thai_nllb"
+"test_split": "validation"
+"dataset_name": "Tha-NLLB3.3B"
+group:
+  belebele_default
+  multiple_choice_defualt_th

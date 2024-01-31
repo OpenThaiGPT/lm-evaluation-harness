@@ -1,0 +1,4 @@
+include: default_et.yaml
+task: xcopa_th_scb
+dataset_name: Tha-SCB_1M-MT_OPUS_TBASE_en-th_moses-spm
+doc_to_text: !function utils.doc_to_text_th

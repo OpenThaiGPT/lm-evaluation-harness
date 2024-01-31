@@ -1,0 +1,8 @@
+"fewshot_split": "validation"
+"include": "_default_template_yaml"
+"task": "belebele_zho_Hans_opus_sent"
+"test_split": "validation"
+"dataset_name": "Zho-opus-mt-en-mul_sent"
+group:
+  belebele_default
+  multiple_choice_defualt_th

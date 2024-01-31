@@ -1,0 +1,4 @@
+include: default_et.yaml
+task: xcopa_th_original
+dataset_name: Tha-original
+doc_to_text: !function utils.doc_to_text_th

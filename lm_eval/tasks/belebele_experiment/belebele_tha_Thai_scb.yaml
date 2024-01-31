@@ -1,0 +1,9 @@
+"fewshot_split": "validation"
+"include": "_default_template_yaml"
+"task": "belebele_tha_Thai_scb"
+"test_split": "validation"
+"dataset_name": "Tha-SCB_1M-MT_OPUS_TBASE_en-th_moses-spm"
+group:
+  belebele_default
+  multiple_choice_defualt_th
+

@@ -1,0 +1,8 @@
+"fewshot_split": "validation"
+"include": "_default_template_yaml"
+"task": "belebele_tha_Thai_opus"
+"test_split": "validation"
+"dataset_name": "Tha-opus-mt-en-mul"
+group:
+  belebele_default
+  multiple_choice_defualt_th

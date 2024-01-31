@@ -1,0 +1,4 @@
+include: default_et.yaml
+task: xcopa_th_nllb
+dataset_name: Tha-NLLB3.3B
+doc_to_text: !function utils.doc_to_text_th

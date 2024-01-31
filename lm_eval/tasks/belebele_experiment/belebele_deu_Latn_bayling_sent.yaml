@@ -1,0 +1,8 @@
+"fewshot_split": "validation"
+"include": "_default_template_yaml"
+"task": "belebele_deu_Latn-bayling_sent"
+"test_split": "validation"
+"dataset_name": "Deu-bayling-7b_sent"
+group:
+  belebele_default
+  multiple_choice_defualt_th
