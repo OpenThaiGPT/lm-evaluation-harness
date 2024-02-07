@@ -6,7 +6,8 @@ task: null
 dataset_path: openthaigpt/xnli_gold
 dataset_name: null
 output_type: multiple_choice
-training_split: validation
+# training_split: validation
+fewshot_split: validation
 test_split: test
 # validation_split: validation
 doc_to_text: null

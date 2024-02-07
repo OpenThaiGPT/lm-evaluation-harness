@@ -52,7 +52,7 @@ class SQuAD2(Task):
     VERSION = 3
     DATASET_PATH = "squad_v2"
     DATASET_NAME = None
-
+    
     # HF changed squad on us so we have to make sure we aren't running the old one
     assert version.parse(datasets.__version__) >= version.parse(
         "1.11.0"

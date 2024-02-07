@@ -969,7 +969,7 @@ class ConfigurableTask(Task):
             else:
                 # Otherwise they are placed in the continuation
                 arguments = [(ctx, f"{target_delimiter}{cont}") for cont in choices]
-
+            # print(arguments, 'arguments')
             request_list = [
                 Instance(
                     request_type="loglikelihood",
