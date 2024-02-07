@@ -17,6 +17,7 @@ import logging
 
 # import python tasks
 from .squadv2.task import SQuAD2
+from .xquad.task import XQuAD
 from .scrolls.task import (
     QuALITY,
     NarrativeQA,
