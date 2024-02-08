@@ -4,5 +4,4 @@
 "test_split": "validation"
 "dataset_name": "Zho-opus-mt-en-mul_sent"
 group:
-  belebele_default
-  multiple_choice_defualt_th
+  - belebele_default

@@ -3,5 +3,6 @@
 "task": "belebele_tha_Thai"
 "test_split": "tha_Thai"
 group:
-  belebele_default
-  multiple_choice_defualt_th
+  - belebele_default
+  - belebele_origin
+  

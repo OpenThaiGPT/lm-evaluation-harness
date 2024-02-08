@@ -4,5 +4,5 @@
 "test_split": "validation"
 "dataset_name": "Zho-bayling-7b_sent"
 group:
-  belebele_default
-  multiple_choice_defualt_th
+  - belebele_default
+  - multiple_choice_defualt_th

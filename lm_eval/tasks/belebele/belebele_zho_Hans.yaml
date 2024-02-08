@@ -3,5 +3,6 @@
 "task": "belebele_zho_Hans"
 "test_split": "zho_Hans"
 group:
-  belebele_default
-  multiple_choice_defualt_zh
+  - belebele_default
+  - belebele_origin
+  

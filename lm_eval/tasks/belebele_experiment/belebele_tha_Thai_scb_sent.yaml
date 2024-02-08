@@ -4,6 +4,5 @@
 "test_split": "validation"
 "dataset_name": "Tha-SCB_1M-MT_OPUS_TBASE_en-th_moses-spm_sent"
 group:
-  belebele_default
-  multiple_choice_defualt_th
-
+  - belebele_default
+  

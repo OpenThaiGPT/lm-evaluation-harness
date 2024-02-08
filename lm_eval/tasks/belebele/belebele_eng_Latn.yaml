@@ -3,5 +3,6 @@
 "task": "belebele_eng_Latn"
 "test_split": "eng_Latn"
 group:
-  belebele_default
-  multiple_choice_defualt_en
+  - belebele_default
+  - belebele_origin
+  
