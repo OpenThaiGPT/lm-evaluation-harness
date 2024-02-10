@@ -1,7 +1,7 @@
 group:
   - multiple_choice_defualt_th
 task: hellaswag_th
-dataset_path: /project/lt200056-opgpth/tae/.cache_datasets/Patt___hella_swag_th_drop
+dataset_path: Patt/HellaSwag_TH_drop
 dataset_name: null
 output_type: multiple_choice
 training_split: train

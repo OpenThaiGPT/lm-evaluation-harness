@@ -1,0 +1,14 @@
+group: glue
+task: rte_th
+dataset_path: Patt/RTE_TH_drop
+dataset_name: default
+output_type: multiple_choice
+training_split: train
+validation_split: validation
+doc_to_text: "{{premise_TH}}\nQuestion: {{hypothesis_TH}} True or False?\nAnswer:"
+doc_to_target: label
+doc_to_choice: ["True", "False"]
+metric_list:
+  - metric: acc
+metadata:
+  version: 1.0
