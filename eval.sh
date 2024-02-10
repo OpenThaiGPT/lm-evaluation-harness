@@ -1,3 +1,14 @@
+#!/bin/bash
+
+# Initialize Conda for script use
+eval "$(conda shell.bash hook)"
+
+# Activate the environment
+conda activate harness
+
+# Your commands here
+echo "Conda environment activated."
+
 #export HF_DATASETS_CACHE=/content/.cache_datasets
 #export TRANSFORMERS_CACHE=/content/.cache_transformers
 
@@ -20,9 +31,15 @@ model_args="dtype=bfloat16"
 
 # Done
 # tasks=hellaswag,hellaswag_th
+# tasks=xcopa_th_nllb,xcopa_th_original,xcopa_th_superai,xcopa_th_scb,xcopa_th_opus
 
-# tasks=xcopa_th
-tasks=xcopa_th,xquad_th,xnli_th,belebele_tha_Thai
+tasks=ted_tran_th_en
+
+# tasks=hellaswag,hellaswag_th,xcopa_th,xquad_th,xnli_th,belebele_tha_Thai
+
+# tasks=xquad_th
+# tasks=xnli_th
+# tasks=belebele_tha_Thai
 # tasks=mgsm_th_native_cot_original,mgsm_th_native_cot_superai,mgsm_th_native_cot_opus,mgsm_th_native_cot_nllb,mgsm_th_native_cot_scb
 # tasks=xcopa_th_nllb,xcopa_th_original,xcopa_th_superai,xcopa_th_scb,xcopa_th_opus
 # tasks='belebele_tha_Thai_nllb_sent','belebele_tha_Thai_scb_sent','belebele_tha_Thai_opus_sent','belebele_tha_Thai_superai_sent','belebele_tha_Thai_original'
@@ -50,7 +67,7 @@ tasks=xcopa_th,xquad_th,xnli_th,belebele_tha_Thai
 model_path_segments=(${pretrained_model//\// })
 model_name="${model_path_segments[-2]}-${model_path_segments[-1]}"
 
-num_fewshot=5
+num_fewshot=0
 output_name=${model_name}_Y$(date +%Y)_${tasks}_${num_fewshot}shot.out
 echo "Writing to $output_name"
 rm -f ${output_name}
@@ -62,6 +79,6 @@ accelerate launch -m lm_eval \
     --tasks ${tasks} \
     --num_fewshot ${num_fewshot} \
     --output output/${tasks}/${model_name} \
-    --batch_size 1 \
+    --batch_size auto \
     --log_samples \
     &>> ${output_name}
