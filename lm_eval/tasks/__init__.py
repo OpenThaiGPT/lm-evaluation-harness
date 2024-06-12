@@ -6,6 +6,7 @@ import lm_eval.base
 
 from . import superglue
 from . import glue
+from . import rte_th
 from . import arc
 from . import coqa
 from . import race
@@ -101,6 +102,7 @@ TASK_REGISTRY = {
     "mnli_mismatched": glue.MNLIMismatched,
     "mrpc": glue.MRPC,
     "rte": glue.RTE,
+    "rte_th": rte_th.RTE,
     "qnli": glue.QNLI,
     "qqp": glue.QQP,
     # "stsb": glue.STSB, # not implemented yet
